@@ -21,8 +21,8 @@ Board.prototype.rightToLeft = function() {
 }
 
 Board.prototype.bottomToTop = function() {
-  this.topToBottom();
-  this.rightToLeft();;
+  this.topToBottom()
+  this.rightToLeft()
 }
 
 //////// Push it
