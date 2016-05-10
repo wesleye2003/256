@@ -2,9 +2,7 @@ function Board() {
   this.stuff = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
 }
 
-Board.prototype.leftToRight = function() {
-  return this.stuff
-}
+Board.prototype.leftToRight = function() {}
 
 Board.prototype.topToBottom = function() {
   for (var i = 0; i < 4; i++) {
