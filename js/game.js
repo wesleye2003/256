@@ -25,7 +25,7 @@ function randomIndex() {
 
 function twoOrFour() {
   var chance = Math.random()
-  if (chance >= 0.66){
+  if (chance >= 0.8){
     return 4
   }else{
     return 2
