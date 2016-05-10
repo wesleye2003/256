@@ -10,6 +10,11 @@ describe("Game", function() {
     expect(game.board).toBeDefined()
   })
 
+  it("has a playable status of true", function() {
+    game = new Game()
+    expect(game.playable).toEqual(true)
+  })
+
   describe("#randomIndex", function() {
     it("gives a number in [0,4)", function() {
       for (var i = 0; i < 100; i++) {

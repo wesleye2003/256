@@ -32,8 +32,22 @@ function twoOrFour() {
   }
 }
 
-// Board.prototype.canPushAny
-// this.rightToLeft
-// if (this.canPushThisWay())
-  // loop and push all rows
-  // generate new number
+Game.prototype.check = function() {
+  this.playable = false
+  this.board.leftToRight()
+  if (this.board.canPushThisWay) {
+    this.playable = true
+  }
+  this.board.rightToLeft()
+  if (this.board.canPushThisWay) {
+    this.playable = true
+  }
+  this.board.topToBottom()
+  if (this.board.canPushThisWay) {
+    this.playable = true
+  }
+  this.board.bottomToTop()
+  if (this.board.canPushThisWay) {
+    this.playable = true
+  }
+}
