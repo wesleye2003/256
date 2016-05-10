@@ -2,19 +2,7 @@ $(document).ready(function() {
   var game = new Game();
   var gameView = new GameView(game);
   gameView.update();
-
-  // while (game.playable) {
-
   gameView.move()
-
-  if (game.playable === false){
-    alert("Game Over!!!!")
-  }
-    // all the push stuff
-    // thing.on(button, gameView.move(dir))
-
-  // }
-
 });
 
 function GameView(game) {
@@ -36,29 +24,64 @@ GameView.prototype.move = function() {
   var that = this
   Mousetrap.bind("right", function() {
     that.game.board.leftToRight()
-    that.game.board.pushThisWay()
-    that.game.board.leftToRight()
-    that.update()
+    if (that.game.board.canPushThisWay()){
+      that.game.board.pushThisWay()
+      that.game.board.leftToRight()
+      that.game.generate();
+      that.update()
+      that.game.check()
+      if (that.game.playable === false){
+        alert("Game Over!!!!")
+      };
+    }else{
+      that.game.board.leftToRight()
+    };
   })
   Mousetrap.bind("left", function() {
     that.game.board.rightToLeft()
-    that.game.board.pushThisWay()
-    that.game.board.rightToLeft()
-    that.update()
+    if (that.game.board.canPushThisWay()){
+      that.game.board.pushThisWay()
+      that.game.board.rightToLeft()
+      that.game.generate();
+      that.update()
+      that.game.check()
+      if (that.game.playable === false){
+        alert("Game Over!!!!")
+      };
+    }else{
+      that.game.board.rightToLeft()
+    }
   })
   Mousetrap.bind("up", function() {
     that.game.board.bottomToTop()
-    that.game.board.pushThisWay()
-    that.game.board.rightToLeft()
-    that.game.board.topToBottom()
-    that.update()
+    if (that.game.board.canPushThisWay()){
+      that.game.board.pushThisWay()
+      that.game.board.rightToLeft()
+      that.game.board.topToBottom()
+      that.game.generate();
+      that.update()
+      that.game.check()
+      if (that.game.playable === false){
+        alert("Game Over!!!!")
+      };
+    }else{
+      that.game.board.rightToLeft()
+      that.game.board.topToBottom()
+    }
   })
   Mousetrap.bind("down", function() {
     that.game.board.topToBottom()
-    that.game.board.pushThisWay()
-    that.game.board.topToBottom()
-    that.update()
+    if (that.game.board.canPushThisWay()){
+      that.game.board.pushThisWay()
+      that.game.board.topToBottom()
+      that.game.generate();
+      that.update()
+      that.game.check()
+      if (that.game.playable === false){
+        alert("Game Over!!!!")
+      };
+    }else{
+      that.game.board.topToBottom()
+    }
   })
 }
-
-
